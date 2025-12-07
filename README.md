@@ -41,14 +41,20 @@ Typical questions include topics related to:
 ---
 
 ## 🏗️ Project Architecture
+The system follows a clear preprocessing → training → inference workflow:
+        
+        Raw FAQs JSON
+             ↓
+        Normalization (lemmatization, deduplication, accent removal)
+             ↓
+        Dataset creation (multilingual questions + labels)
+             ↓
+        mBERT fine-tuning (sequence classification)
+             ↓
+        Model export (HuggingFace format)
+             ↓
+        Inference pipeline (normalize → classify → answer)
 
-```mermaid
-graph TD
-    A[📄 Raw FAQs JSON] --> B[🔧 Normalization<br/>(lemmatization, deduplication, accent removal)]
-    B --> C[📦 Dataset Creation<br/>(multilingual questions + labels)]
-    C --> D[🧠 mBERT Fine-Tuning<br/>(sequence classification)]
-    D --> E[💾 Model Export<br/>(HuggingFace format)]
-    E --> F[⚙️ Inference Pipeline<br/>(normalize → classify → answer)]
 
 
 ## 🧪 Technologies Used
