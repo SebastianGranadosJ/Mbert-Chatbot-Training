@@ -2,6 +2,17 @@
 
 A multilingual FAQ chatbot built using **Multilingual BERT (mBERT)** and trained on a **synthetic bilingual dataset (Spanish + English)** to classify and answer financial questions related to **StarkAdvisor**, a financial advisory platform, and general finance concepts.
 
+This project demonstrates how to build an intelligent chatbot **without relying on commercial Generative AI providers** that charge per token.  
+By using a **fine-tuned classifier instead of generative models**, this system offers:
+
+- **Zero token costs** once the model is trained  
+- **No dependency on third-party AI services**, giving full autonomy and avoiding pay-per-use APIs  
+- **Full control over the answers**, since the bot selects from predefined responses instead of generating free-form text  
+- **Predictable and safe behavior**, ideal for financial applications where accuracy and consistency are essential
+
+It is a practical, efficient, and cost-effective approach for organizations that want an FAQ assistant powered by modern NLP—but without the cost, unpredictability, or privacy concerns of generative LLM APIs.
+
+
 
 ![Made with mBERT](https://img.shields.io/badge/Made%20with-mBERT-blueviolet)
 
@@ -31,19 +42,13 @@ Typical questions include topics related to:
 
 ## 🏗️ Project Architecture
 
-The system follows a clear **preprocessing → training → inference** workflow:
-
-Raw FAQs JSON
-     ↓
-Normalization (lemmatization, deduplication, accent removal)
-     ↓
-Dataset creation (multilingual questions + labels)
-     ↓
-mBERT fine-tuning (sequence classification)
-     ↓
-Model export (HuggingFace format)
-     ↓
-Inference pipeline (normalize → classify → answer)
+```mermaid
+graph TD
+    A[📄 Raw FAQs JSON] --> B[🔧 Normalization<br/>(lemmatization, deduplication, accent removal)]
+    B --> C[📦 Dataset Creation<br/>(multilingual questions + labels)]
+    C --> D[🧠 mBERT Fine-Tuning<br/>(sequence classification)]
+    D --> E[💾 Model Export<br/>(HuggingFace format)]
+    E --> F[⚙️ Inference Pipeline<br/>(normalize → classify → answer)]
 
 
 ## 🧪 Technologies Used
